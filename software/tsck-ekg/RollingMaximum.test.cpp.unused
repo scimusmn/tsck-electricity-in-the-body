@@ -1,0 +1,55 @@
+#include <vector>
+#include <math.h>
+#include <stdio.h>
+
+#define PI 3.141592
+
+#include "minunit.h"
+#include "suites.h"
+#include "FakeArduino.h"
+#include "SignalProcessing.h"
+
+
+static mu_test max_basic();
+
+
+void RollingMaximum_tests()
+{
+  mu_run_test("RollingMaximum basic functionality", max_basic);
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+mu_test max_basic() {
+  const double memoryTime = 3; //seconds
+  const double maxSampleRate = 100; // samples/sec
+  
+  smm::RollingMaximum max(memoryTime, maxSampleRate);
+
+  max.push(-1000);
+  mu_assert_equal(max.value(), -1000);
+
+  delay(1000);
+
+  max.push(1000);
+  mu_assert_equal(max.value(), 1000);
+
+  delay(1000);
+
+  max.push(4);
+  mu_assert_equal(max.value(), 1000);
+
+  delay(1000);
+
+  max.push(5);
+  mu_assert_equal(max.value(), 1000);
+
+  delay(1500);
+
+  max.push(3);
+  printf("%f\n", max.value());
+  mu_assert_equal(max.value(), 5);
+
+  return 0;
+}

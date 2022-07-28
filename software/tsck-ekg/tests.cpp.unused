@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+#include "minunit.h"
+#include "suites.h"
+
+
+int tests_run = 0;
+int tests_failed = 0;
+
+
+int main()
+{
+   printf("======== begin tests ========\n\n");
+   RUN_TESTS();
+   printf("========= end tests =========\n");
+   mu_tests_finished();
+   return tests_failed;
+}

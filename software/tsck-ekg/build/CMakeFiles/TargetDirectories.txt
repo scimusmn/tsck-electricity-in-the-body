@@ -1,0 +1,3 @@
+C:/msys64/home/kaswanson/work/tsck/tsck-ekg/tsck-ekg/build/CMakeFiles/rebuild_cache.dir
+C:/msys64/home/kaswanson/work/tsck/tsck-ekg/tsck-ekg/build/CMakeFiles/test.dir
+C:/msys64/home/kaswanson/work/tsck/tsck-ekg/tsck-ekg/build/CMakeFiles/edit_cache.dir
